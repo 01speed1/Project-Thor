@@ -1,0 +1,43 @@
+  <div class="item" style="text-align: center">
+    <a class="large ui negative basic button"  [routerLink]="['/dashboard']"> 
+      <i class="tachometer alternate icon"></i> Dashboard 
+    </a>
+  </div>
+
+  <a class="item"> 
+    <i class="users icon"></i> Usuarios 
+  </a>
+
+  <div class="item">
+      <i class="paw icon"> </i> Animales
+      <div class="menu">
+        <a class="item"> Lista General </a>
+        <a class="item"> Solicitudes de Adopción - Admin </a>        
+      </div>
+  </div>
+  <div class="item">
+      <i class="handshake outline icon"> </i> Donaciones
+      <div class="menu">
+        <a class="item"> Lista donaciones </a>
+        <a class="item"> Generar donacion </a>
+      </div>
+  </div>
+  <div class="item">
+      <i class="map marker alternate icon"></i> Mapa
+      <div class="menu">        
+        <a class="item" [routerLink]="['/dashboard/map']"> ( Adopciones - Denuncias) </a>
+      </div>
+  </div>
+  <div class="item">
+      <i class="cogs icon"> </i> Configuraciones
+      <div class="menu">
+        <a class="item" [routerLink]="['/dashboard/config/type-breed']"> Raza     </a> 
+        <a class="item" [routerLink]="['/dashboard/config/type-animal']"> Animales </a>
+        <a class="item" [routerLink]="['/dashboard/config/type-medicine']"> Medicamentos  </a>
+        <a class="item" [routerLink]="['/dashboard/config/type-donation']"> Donacion  </a>
+        <a class="item" [routerLink]="['/dashboard/config/type-object']"> Objetos  </a>
+        <a class="item" [routerLink]="['/dashboard/config/type-rol']"> Roles  </a>
+        <a class="item" [routerLink]="['/dashboard/config/type-rh']"> Rh </a>
+      </div>
+  </div>
+  
