@@ -12,8 +12,14 @@ import { TypeDonationComponent } from './configurations/type-donation/type-donat
 import { TypeObjectComponent } from './configurations/type-object/type-object.component';
 import { TypeRolComponent } from './configurations/type-rol/type-rol.component';
 import { TypeRhComponent } from './configurations/type-rh/type-rh.component';
+// Dashboard/Map
 import { MapComponent } from './map/map/map.component';
-
+// Dashboard/Users
+import { UsersComponent } from './users/users/users.component';
+// Dashboard/Animals
+import { AnimalsComponent } from './animals/animals/animals.component';
+// Dashboard/Animals
+import { DonationsComponent } from './donations/donations/donations.component';
 
 const dashboardRoutes: Routes = [
     {
@@ -28,8 +34,11 @@ const dashboardRoutes: Routes = [
             { path: 'dashboard/config/type-object',     component: TypeObjectComponent      },
             { path: 'dashboard/config/type-rol',        component: TypeRolComponent         },
             { path: 'dashboard/config/type-rh',         component: TypeRhComponent          },
-            { path: 'dashboard/map',                    component: MapComponent          },
-            { path: '', redirectTo: '/dashboard',       pathMatch: 'full' }
+            { path: 'dashboard/map',                    component: MapComponent             },
+            { path: 'dashboard/users',                  component: UsersComponent           },
+            { path: 'dashboard/animals',                component: AnimalsComponent         },
+            { path: 'dashboard/donations',              component: DonationsComponent       },
+            { path: '', redirectTo: '/dashboard',       pathMatch: 'full'                   }
         ]
     }
 ];

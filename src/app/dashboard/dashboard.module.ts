@@ -8,11 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard.component';
 import { IndexComponent } from './index/index.component';
 
-// Routes
-import { DASHBOARD_ROUTES } from './dashboard.routes';
-import { MenuComponent } from './shared/menu/menu.component';
-import { SidebarComponent } from './shared/sidebar/sidebar.component';
-
 // Dashboard/configurations
 import { TypeBreedComponent } from './configurations/type-breed/type-breed.component';
 import { TypeAnimalComponent } from './configurations/type-animal/type-animal.component';
@@ -21,10 +16,18 @@ import { TypeDonationComponent } from './configurations/type-donation/type-donat
 import { TypeObjectComponent } from './configurations/type-object/type-object.component';
 import { TypeRolComponent } from './configurations/type-rol/type-rol.component';
 import { TypeRhComponent } from './configurations/type-rh/type-rh.component';
-
 // Dashboard/Map
 import { MapComponent } from './map/map/map.component';
-
+// Dashboard/Users
+import { UsersComponent } from './users/users/users.component';
+// Dashboard/Animals
+import { AnimalsComponent } from './animals/animals/animals.component';
+// Dashboard/Donations
+import { DonationsComponent } from './donations/donations/donations.component';
+// Routes
+import { DASHBOARD_ROUTES } from './dashboard.routes';
+import { MenuComponent } from './shared/menu/menu.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 @NgModule({
     imports: [
@@ -45,7 +48,10 @@ import { MapComponent } from './map/map/map.component';
         TypeObjectComponent,
         TypeRolComponent,
         TypeRhComponent,
-        MapComponent
+        MapComponent,
+        UsersComponent,
+        AnimalsComponent,
+        DonationsComponent
     ],
     exports: [
         DashboardComponent
