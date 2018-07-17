@@ -33,7 +33,7 @@
       <tr>
         <th></th>
         <th colspan="2">
-          <div class="ui right floated small positive basic labeled icon button">
+          <div class="ui right floated small positive basic labeled icon button" (click)="launchModal()">
             <i class="hand pointer outline icon"></i> Crear Rh
           </div>          
         </th>
@@ -41,4 +41,27 @@
     </tfoot>
   </table>
 
+</div>
+
+<!-- Modal -->
+<div class="ui tiny modal">
+  <div class="ui icon header">
+    <i class="cogs icon"></i> Tipo - Rh -
+  </div>
+  <div class="content">
+      <form ngNativeValidate 
+        [formGroup]="formRh" (ngSubmit)="createRh()" class="ui form">
+          <div class="field">
+            <label>Nombre</label>
+            <input type="text" name="name" formControlName="name" placeholder="Tipo de Rh - Nombre">
+            <div class="ui pointing label" *ngIf="!formRh.controls.name.valid">
+                Please enter a value
+              </div>
+          </div>
+          <button class="ui right floated small positive basic labeled icon button" type="submit" [disabled]="formRh.invalid">
+              <i class="hand pointer outline icon"></i> Crear
+          </button>
+          <br><br>
+      </form>
+  </div> 
 </div>

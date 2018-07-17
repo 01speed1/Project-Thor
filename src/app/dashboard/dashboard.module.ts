@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Components
 import { DashboardComponent } from './dashboard.component';
@@ -29,12 +30,15 @@ import { DASHBOARD_ROUTES } from './dashboard.routes';
 import { MenuComponent } from './shared/menu/menu.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
+
+
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
         HttpClientModule,
-        DASHBOARD_ROUTES
+        DASHBOARD_ROUTES,
+        ReactiveFormsModule
     ],
     declarations: [
         DashboardComponent,

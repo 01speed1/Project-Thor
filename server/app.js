@@ -44,8 +44,7 @@ mongoose.connection.openUri('mongodb://localhost:27017/adoptame',
 
 // Middleware
 app.use(cors())
-// parse application/json
-// app.use(bodyParser.json({ type: 'application/*+json' }))
+// Body parser
 app.use(bodyParser.json())
 // Parse application/x-www-form-urleconded
 app.use(bodyParser.urlencoded({ extended: false }))
