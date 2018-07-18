@@ -13,38 +13,27 @@
       </tr>
     </thead>
     <tbody *ngFor="let typeRh of typeRhX">
-      
-        <tr  *ngIf="!typeRh || typeRh?.length === 0; else message">
-          <td></td>
-          <td>
-            No results
-          </td>        
-        </tr>   
 
-      <ng-template #message>        
         <td>Plasma Tipo: &nbsp; &nbsp; <div class="ui red horizontal label">{{ typeRh.name }}</div></td>   
         <td>
             <div class="ui icon small buttons">
-              <button class="ui yellow basic button" (click)="sendModaltoUpdate(typeRh._id)">
+              <button class="ui yellow basic button" (click)="sendModaltoUpdate(typeRh)">
                 <i class="edit icon"></i> Editar
               </button>
               <button class="ui red basic button" (click)="deleteTypeRh(typeRh._id)">
                 <i class="trash icon"></i> Eliminar
               </button>            
             </div>
-        </td>     
-       </ng-template> 
-
-        
+        </td>            
 
     </tbody>
     <tfoot class="full-width">
       <tr>
         <th></th>
-        <th colspan="2">
+        <th colspan="2">          
           <div class="ui right floated small positive basic labeled icon button" (click)="sendModaltoCreate()">
             <i class="hand pointer outline icon"></i> Crear Rh
-          </div>          
+          </div>                   
         </th>
       </tr>
     </tfoot>
@@ -59,17 +48,22 @@
   </div>
   <div class="content">
       <form ngNativeValidate 
-        [formGroup]="formRh" (ngSubmit)="createTypeRh()" class="ui form">
+        [formGroup]="formRh" (ngSubmit)="chooseActionTypeRh()" class="ui form">
           <div class="field">
             <label>Nombre</label>
             <input type="text" name="name" formControlName="name" placeholder="Tipo de Rh - Nombre">
             <div class="ui pointing label" *ngIf="!formRh.controls.name.valid">
                 Escribe algo aqui, por favor!
               </div>
-          </div>
-          <button class="ui right floated small positive basic labeled icon button" type="submit" [disabled]="formRh.invalid">
+          </div>          
+          <button *ngIf="!update; else updateBoton" class="ui right floated small positive basic labeled icon button" type="submit" [disabled]="formRh.invalid">
               <i class="hand pointer outline icon"></i> Crear
           </button>
+          <ng-template #updateBoton>
+              <button class="ui right floated small yellow basic labeled icon button" type="submit" [disabled]="formRh.invalid" (click)="updateTypeRh(typeId)">
+                  <i class="hand pointer outline icon"></i> Actualizar
+              </button>
+          </ng-template>
           <br><br>
       </form>
   </div> 

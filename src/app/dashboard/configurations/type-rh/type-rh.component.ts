@@ -20,6 +20,7 @@ export class TypeRhComponent implements OnInit {
   typeRh: TypeRh = new TypeRh('');
   typeRhX: Observable<TypeRh[]>;
   title:  String;
+  typeId: TypeRh;
 
   constructor(
         private _typeService: TypeRhService        
@@ -29,31 +30,39 @@ export class TypeRhComponent implements OnInit {
       name: new FormControl(null, Validators.required)
     });
 
-    this.update = false;    
-    this.loadAllTypeRh();
+    this.update = false;        
+    
    }
 
-  ngOnInit() {    
-  }
+  ngOnInit() {
+    this.loadAllTypeRh();    
+   }
 
   sendModaltoCreate() {
     this.update = false;
     this.title = 'Crear - Rh -';
+    this.typeRh = new TypeRh('');
+    this.formRh.patchValue(this.typeRh);
     $('#modalTypeRh').modal('show');
   }
   
-  sendModaltoUpdate() {
+  sendModaltoUpdate(typeRh: TypeRh) {
     this.update = true;
     this.title = 'Update - Rh -';
+    // Adjunta { key => value } en el form
+    this.formRh.patchValue(typeRh);
+    this.typeId = typeRh['_id'];
     $('#modalTypeRh').modal('show');
   }
 
+  // 100%
   loadAllTypeRh() {
     this._typeService.getAllTypeRh().subscribe( data => {
-      this.typeRhX = data['typeRh'];      
-    });
+      return this.typeRhX = data.typeRh;      
+    });        
   }
 
+  // 100%
   createTypeRh() {
     if (this.formRh.invalid) {
       swal('Bad Job', '¡Ups! Algo va mal, formulario inválido..!', 'error' );
@@ -79,6 +88,7 @@ export class TypeRhComponent implements OnInit {
     });
   }
 
+  // 100%
   deleteTypeRh(id: TypeRh) {
     this._typeService.deleteTypeRh(id).subscribe( data => {
 
@@ -91,5 +101,18 @@ export class TypeRhComponent implements OnInit {
       // Carga los TypeRh 
       this.loadAllTypeRh();
     });
+  }  
+
+  updateTypeRh(id?: TypeRh) {
+    console.log('Update');
   }
+
+  chooseActionTypeRh() {
+    if(this.update) {
+      this.updateTypeRh();
+    } else {
+      this.createTypeRh();
+    }
+  }
+
 }
