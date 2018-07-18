@@ -30,7 +30,7 @@ export class TypeRhService {
     return this.http.get(url);
   }
 
-  updateTypeRh(id: TypeRh, updateTypeRh: FormGroup) {
+  updateTypeRh(id: String, updateTypeRh: FormGroup) {
     const url = `${this.api}${this.route}/${id}`;
     return this.http.put(url, updateTypeRh);
   }

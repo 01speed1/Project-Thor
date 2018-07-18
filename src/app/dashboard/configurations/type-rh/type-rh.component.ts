@@ -20,7 +20,7 @@ export class TypeRhComponent implements OnInit {
   typeRh: TypeRh = new TypeRh('');
   typeRhX: Observable<TypeRh[]>;
   title:  String;
-  typeId: TypeRh;
+  typeId: String = '';
 
   constructor(
         private _typeService: TypeRhService        
@@ -43,6 +43,7 @@ export class TypeRhComponent implements OnInit {
     this.title = 'Crear - Rh -';
     this.typeRh = new TypeRh('');
     this.formRh.patchValue(this.typeRh);
+    this.typeId = '';
     $('#modalTypeRh').modal('show');
   }
   
@@ -89,8 +90,8 @@ export class TypeRhComponent implements OnInit {
   }
 
   // 100%
-  deleteTypeRh(id: TypeRh) {
-    this._typeService.deleteTypeRh(id).subscribe( data => {
+  deleteTypeRh(type: TypeRh) {
+    this._typeService.deleteTypeRh(type).subscribe( data => {
 
       if(data['Ok'] !== true ) {
         swal('Bad Job', `¡Lo sentimos! Status: ${data[status]} `, 'error' );
@@ -103,16 +104,27 @@ export class TypeRhComponent implements OnInit {
     });
   }  
 
-  updateTypeRh(id?: TypeRh) {
-    console.log('Update');
+  updateTypeRh() {
+    this._typeService.updateTypeRh(this.typeId, this.formRh.value).subscribe( data => {
+      if(data['Ok']) {
+        swal('Good Job', 'Tipo de Sangre actualizado correctamente', 'success');
+        this.loadAllTypeRh();
+      } else {
+        console.log(data['error']);
+      }
+    });
+    
   }
 
   chooseActionTypeRh() {
-    if(this.update) {
+
+    if(this.update) {      
       this.updateTypeRh();
-    } else {
-      this.createTypeRh();
-    }
+    } else {      
+      this.createTypeRh();      
+    }    
+
+    $('#modalTypeRh').modal('hide');
   }
 
 }

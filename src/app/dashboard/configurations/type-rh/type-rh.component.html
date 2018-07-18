@@ -20,7 +20,7 @@
               <button class="ui yellow basic button" (click)="sendModaltoUpdate(typeRh)">
                 <i class="edit icon"></i> Editar
               </button>
-              <button class="ui red basic button" (click)="deleteTypeRh(typeRh._id)">
+              <button class="ui red basic button" (click)="deleteTypeRh(typeRh)">
                 <i class="trash icon"></i> Eliminar
               </button>            
             </div>
@@ -56,11 +56,11 @@
                 Escribe algo aqui, por favor!
               </div>
           </div>          
-          <button *ngIf="!update; else updateBoton" class="ui right floated small positive basic labeled icon button" type="submit" [disabled]="formRh.invalid">
+          <button *ngIf="!update; else updateBoton" class="ui right floated small positive basic labeled icon button" type="submit" [disabled]="formRh.invalid" (click)="createTypeRh()">
               <i class="hand pointer outline icon"></i> Crear
           </button>
           <ng-template #updateBoton>
-              <button class="ui right floated small yellow basic labeled icon button" type="submit" [disabled]="formRh.invalid" (click)="updateTypeRh(typeId)">
+              <button class="ui right floated small yellow basic labeled icon button" type="submit" [disabled]="formRh.invalid" (click)="updateTypeRh()">
                   <i class="hand pointer outline icon"></i> Actualizar
               </button>
           </ng-template>
