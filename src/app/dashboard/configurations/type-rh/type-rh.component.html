@@ -12,50 +12,59 @@
         <th>Acciones</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let typeRh of typeRhX">
+      
+        <tr  *ngIf="!typeRh || typeRh?.length === 0; else message">
+          <td></td>
+          <td>
+            No results
+          </td>        
+        </tr>   
 
-      <tr>        
-        <td>Plasma Tipo: &nbsp; &nbsp; <div class="ui red horizontal label">O+</div></td>   
+      <ng-template #message>        
+        <td>Plasma Tipo: &nbsp; &nbsp; <div class="ui red horizontal label">{{ typeRh.name }}</div></td>   
         <td>
             <div class="ui icon small buttons">
-              <button class="ui yellow basic button">
+              <button class="ui yellow basic button" (click)="sendModaltoUpdate(typeRh._id)">
                 <i class="edit icon"></i> Editar
               </button>
-              <button class="ui red basic button">
+              <button class="ui red basic button" (click)="deleteTypeRh(typeRh._id)">
                 <i class="trash icon"></i> Eliminar
               </button>            
             </div>
         </td>     
-      </tr>
+       </ng-template> 
+
+        
 
     </tbody>
     <tfoot class="full-width">
       <tr>
         <th></th>
         <th colspan="2">
-          <div class="ui right floated small positive basic labeled icon button" (click)="launchModal()">
+          <div class="ui right floated small positive basic labeled icon button" (click)="sendModaltoCreate()">
             <i class="hand pointer outline icon"></i> Crear Rh
           </div>          
         </th>
       </tr>
     </tfoot>
-  </table>
+  </table> 
 
 </div>
 
-<!-- Modal -->
-<div class="ui tiny modal">
+<!-- ======================================= Modal ======================================= -->
+<div class="ui tiny modal" id="modalTypeRh">
   <div class="ui icon header">
-    <i class="cogs icon"></i> Tipo - Rh -
+    <i class="heartbeat icon"></i> {{ title }}
   </div>
   <div class="content">
       <form ngNativeValidate 
-        [formGroup]="formRh" (ngSubmit)="createRh()" class="ui form">
+        [formGroup]="formRh" (ngSubmit)="createTypeRh()" class="ui form">
           <div class="field">
             <label>Nombre</label>
             <input type="text" name="name" formControlName="name" placeholder="Tipo de Rh - Nombre">
             <div class="ui pointing label" *ngIf="!formRh.controls.name.valid">
-                Please enter a value
+                Escribe algo aqui, por favor!
               </div>
           </div>
           <button class="ui right floated small positive basic labeled icon button" type="submit" [disabled]="formRh.invalid">

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Components
 import { DashboardComponent } from './dashboard.component';
@@ -32,12 +32,14 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 
 
+
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
         HttpClientModule,
         DASHBOARD_ROUTES,
+        FormsModule,
         ReactiveFormsModule
     ],
     declarations: [
@@ -55,7 +57,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
         MapComponent,
         UsersComponent,
         AnimalsComponent,
-        DonationsComponent
+        DonationsComponent        
     ],
     exports: [
         DashboardComponent
