@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TypeRh } from './type-rh-model';
 
@@ -13,7 +13,7 @@ declare const $: any;
   templateUrl: './type-rh.component.html',
   styleUrls: ['./type-rh.component.css']
 })
-export class TypeRhComponent implements OnInit {
+export class TypeRhComponent implements OnInit, OnDestroy {
   
   update: boolean;
   formRh: FormGroup;
@@ -28,14 +28,13 @@ export class TypeRhComponent implements OnInit {
 
     this.formRh = new FormGroup({
       name: new FormControl(null, Validators.required)
-    });
-
-    this.update = false;        
+    });    
     
    }
 
   ngOnInit() {
-    this.loadAllTypeRh();    
+    this.loadAllTypeRh();
+    this.update = false;   
    }
 
   sendModaltoCreate() {
@@ -45,6 +44,8 @@ export class TypeRhComponent implements OnInit {
     this.formRh.patchValue(this.typeRh);
     this.typeId = '';
     $('#modalTypeRh').modal('show');
+    console.log(this.update);
+    return;
   }
   
   sendModaltoUpdate(typeRh: TypeRh) {
@@ -54,6 +55,8 @@ export class TypeRhComponent implements OnInit {
     this.formRh.patchValue(typeRh);
     this.typeId = typeRh['_id'];
     $('#modalTypeRh').modal('show');
+    console.log(this.update);
+    return;
   }
 
   // 100%
@@ -91,16 +94,17 @@ export class TypeRhComponent implements OnInit {
 
   // 100%
   deleteTypeRh(type: TypeRh) {
-    this._typeService.deleteTypeRh(type).subscribe( data => {
+    this._typeService.deleteTypeRh(type['_id']).subscribe( data => {
 
       if(data['Ok'] !== true ) {
         swal('Bad Job', `¡Lo sentimos! Status: ${data[status]} `, 'error' );
-        return;
+        return;        
       }
 
       swal('Good Job', `Tipo de Sangre eliminado correctamente `, 'success' );
       // Carga los TypeRh 
       this.loadAllTypeRh();
+
     });
   }  
 
@@ -108,12 +112,12 @@ export class TypeRhComponent implements OnInit {
     this._typeService.updateTypeRh(this.typeId, this.formRh.value).subscribe( data => {
       if(data['Ok']) {
         swal('Good Job', 'Tipo de Sangre actualizado correctamente', 'success');
-        this.loadAllTypeRh();
+        this.loadAllTypeRh();        
       } else {
         console.log(data['error']);
       }
     });
-    
+    $('#modalTypeRh').modal('hide');    
   }
 
   chooseActionTypeRh() {
@@ -122,9 +126,12 @@ export class TypeRhComponent implements OnInit {
       this.updateTypeRh();
     } else {      
       this.createTypeRh();      
-    }    
+    }   
+        
+  }
 
-    $('#modalTypeRh').modal('hide');
+  ngOnDestroy() {
+    this.update = false;    
   }
 
 }

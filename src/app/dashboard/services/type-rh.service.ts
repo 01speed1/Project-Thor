@@ -23,12 +23,7 @@ export class TypeRhService {
   saveTypeRh(typeRh: TypeRh) {
     const url = `${this.api}${this.route}`;
     return this.http.post(url, typeRh);
-  }
-
-  getTypeRhOne(id: TypeRh) {
-    const url = `${this.api}${this.route}/${id}`;
-    return this.http.get(url);
-  }
+  }  
 
   updateTypeRh(id: String, updateTypeRh: FormGroup) {
     const url = `${this.api}${this.route}/${id}`;
