@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-type-medicine',
@@ -10,6 +11,9 @@ export class TypeMedicineComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    $().ready( () => {
+      $('select.dropdown').dropdown();
+    });
   }
 
 }
