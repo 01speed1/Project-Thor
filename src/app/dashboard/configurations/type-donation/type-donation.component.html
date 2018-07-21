@@ -1,3 +1,64 @@
-<p>
-  type-donation works!
-</p>
+<h2 class="ui center aligned icon header">
+    <i class="circular linkify icon"></i>
+    Tipo de Donacion
+  </h2>
+  
+  <div style="padding: 2.5rem 2.5rem">
+    
+    <!-- Form Editar -->
+    <div class="ui segment">
+      <form class="ui form">
+        <div class="two fields">
+          <div class="field">
+            <label>Tipo de Donación</label>
+            <input placeholder="Ej: Dinero" type="text" name="name">
+          </div>                
+          <div class="field" style="margin-top: 26px"> 
+            <button type="submit" class="ui small button"> Ok, Guardar! </button>        
+          </div>
+        </div>        
+      </form>
+    </div>
+    <!-- Form Editar -->
+
+    <table class="ui striped small basic table">
+      <thead style="background: rgb(221, 217, 217);">
+        <tr>        
+          <th>Nombre</th>        
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+  
+          <td>Tipo Donación: &nbsp; &nbsp; <div class="ui green horizontal label"> Comida, Dinero, Medicamentos, Sangre, Objetos  </div></td>   
+          <td>
+              <div class="ui icon small buttons">
+                <button class="ui yellow basic button">
+                  <i class="edit icon"></i> Editar
+                </button>
+                <button class="ui red basic button">
+                  <i class="trash icon"></i> Eliminar
+                </button>            
+              </div>
+          </td>            
+  
+      </tbody>
+      <tfoot class="full-width">
+        <tr>
+            <th colspan="3">
+              <div class="ui right floated pagination menu">
+                <a class="icon item">
+                  <i class="left chevron icon"></i>
+                </a>
+                <a class="item">1</a>
+                <a class="item">2</a>              
+                <a class="icon item">
+                  <i class="right chevron icon"></i>
+                </a>
+              </div>
+            </th>
+          </tr>         
+      </tfoot>
+    </table> 
+  
+  </div>

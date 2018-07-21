@@ -10,7 +10,6 @@ import { TypeAnimalComponent } from './configurations/type-animal/type-animal.co
 import { TypeMedicineComponent } from './configurations/type-medicine/type-medicine.component';
 import { TypeDonationComponent } from './configurations/type-donation/type-donation.component';
 import { TypeObjectComponent } from './configurations/type-object/type-object.component';
-import { TypeRolComponent } from './configurations/type-rol/type-rol.component';
 import { TypeRhComponent } from './configurations/type-rh/type-rh.component';
 // Dashboard/Map
 import { MapComponent } from './map/map/map.component';
@@ -31,8 +30,7 @@ const dashboardRoutes: Routes = [
             { path: 'dashboard/config/type-animal',     component: TypeAnimalComponent      },
             { path: 'dashboard/config/type-medicine',   component: TypeMedicineComponent    },
             { path: 'dashboard/config/type-donation',   component: TypeDonationComponent    },
-            { path: 'dashboard/config/type-object',     component: TypeObjectComponent      },
-            { path: 'dashboard/config/type-rol',        component: TypeRolComponent         },
+            { path: 'dashboard/config/type-object',     component: TypeObjectComponent      },            
             { path: 'dashboard/config/type-rh',         component: TypeRhComponent          },
             { path: 'dashboard/map',                    component: MapComponent             },
             { path: 'dashboard/users',                  component: UsersComponent           },

@@ -30,10 +30,10 @@
     <tfoot class="full-width">
       <tr>
         <th></th>
-        <th colspan="2">          
-          <div class="ui right floated small positive basic labeled icon button" (click)="sendModaltoCreate()">
-            <i class="hand pointer outline icon"></i> Crear Rh
-          </div>                   
+        <th colspan="2">   
+              <button class="ui right floated positive basic button" (click)="sendModaltoCreate()">
+                <i class="hand pointer outline icon"></i> Crear Rh
+              </button>                 
         </th>
       </tr>
     </tfoot>
@@ -54,9 +54,9 @@
             <input type="text" name="name" formControlName="name" placeholder="Tipo de Rh - Nombre">
             <div class="ui pointing label" *ngIf="!formRh.controls.name.valid">
                 Escribe algo aqui, por favor!
-              </div>
+            </div>
           </div>          
-          <button *ngIf="!update; else updateBoton" class="ui right floated small positive basic labeled icon button" type="submit" [disabled]="formRh.invalid" (click)="createTypeRh()">
+          <button *ngIf="!update; else updateBoton" class="ui right floated small positive basic labeled icon button" type="submit" [disabled]="formRh.invalid">
               <i class="hand pointer outline icon"></i> Crear
           </button>
           <ng-template #updateBoton>

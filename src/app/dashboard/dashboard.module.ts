@@ -15,7 +15,6 @@ import { TypeAnimalComponent } from './configurations/type-animal/type-animal.co
 import { TypeMedicineComponent } from './configurations/type-medicine/type-medicine.component';
 import { TypeDonationComponent } from './configurations/type-donation/type-donation.component';
 import { TypeObjectComponent } from './configurations/type-object/type-object.component';
-import { TypeRolComponent } from './configurations/type-rol/type-rol.component';
 import { TypeRhComponent } from './configurations/type-rh/type-rh.component';
 // Dashboard/Map
 import { MapComponent } from './map/map/map.component';
@@ -51,8 +50,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
         TypeAnimalComponent,
         TypeMedicineComponent,
         TypeDonationComponent,
-        TypeObjectComponent,
-        TypeRolComponent,
+        TypeObjectComponent,        
         TypeRhComponent,
         MapComponent,
         UsersComponent,

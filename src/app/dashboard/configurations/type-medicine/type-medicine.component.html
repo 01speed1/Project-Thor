@@ -1,3 +1,103 @@
-<p>
-  type-medicine works!
-</p>
+<h2 class="ui center aligned icon header">
+    <i class="circular cogs icon"></i>
+    Tipo de Medicamentos
+  </h2>
+  
+  <div style="padding: 2.5rem 2.5rem">
+
+    <!-- Form Editar & Crear -->
+    <div class="ui segment">
+      <form class="ui form">
+        <div class="three fields">
+          <div class="field">
+            <label>Nombre del Medicamento</label>
+            <input name="name" placeholder="Nombre de Medicamento" type="text" >
+          </div>                
+          <div class="field">
+            <label>Forma</label>
+            <select name="presentation" id="" class="ui search dropdown">
+              <option value="">Selecciona alguna por favor</option>
+              <option value="1">Tópico - (Crema)</option>
+              <option value="2">Inyectable - (Ampolleta)</option>
+              <option value="3">Sólido - (Pasta)</option>
+              <option value="4">Líquido </option>              
+            </select>
+          </div>                
+          <div class="field">
+            <label>Presentación</label>
+            <select name="presentation" id="" class="ui search dropdown">
+              <option value="">Selecciona alguna por favor</option>
+              <option value="1">Unidad</option>
+              <option value="2">Caja</option>
+              <option value="3">Sobre</option>
+              <option value="4">Frasco</option>
+              <option value="5">Tableta</option>
+              <option value="6">Ampolleta</option>
+            </select>
+          </div>  
+          <div class="field">         
+            <label>Symbol</label> 
+            <div class="ui action input">
+              <input type="text" placeholder="Especif. numérica">
+              <select class="ui compact selection dropdown">
+                <option value="mg">mg</option>
+                <option value="ml">ml</option>
+                <option value="gr">gr</option>
+                <option value="lt">lt</option>
+              </select>              
+            </div>
+          </div>              
+        </div>        
+
+        <button type="submit" class="ui small button"> Ok, Guardar! </button>        
+      </form>
+    </div>
+    <!-- Form Editar & Crear -->
+    
+    <table class="ui striped small basic table">
+      <thead style="background: rgb(221, 217, 217);">
+        <tr>        
+          <th>Nombre</th> 
+          <th>Forma</th>           
+          <th>Presentación</th>         
+          <th>Symbol</th>         
+          <th>Acciones</th>          
+        </tr>
+      </thead>
+      <tbody>
+  
+          <td>Medicamento: &nbsp; &nbsp; <div class="ui green horizontal label"> Acetaminofen </div></td>   
+          <td>Inyectable</td>
+          <td>Ampolleta</td>
+          <td>5 ml</td>          
+          <td>
+              <div class="ui icon small buttons">
+                <button class="ui yellow basic button">
+                  <i class="edit icon"></i> Editar
+                </button>
+                <button class="ui red basic button">
+                  <i class="trash icon"></i> Eliminar
+                </button>            
+              </div>
+          </td>      
+  
+      </tbody>
+      <tfoot class="full-width">
+      <tr>
+          <th colspan="5">
+            <div class="ui right floated pagination menu">
+              <a class="icon item">
+                <i class="left chevron icon"></i>
+              </a>
+              <a class="item">1</a>
+              <a class="item">2</a>              
+              <a class="icon item">
+                <i class="right chevron icon"></i>
+              </a>
+            </div>
+          </th>
+        </tr>        
+      </tfoot>
+    </table> 
+  
+  </div>
