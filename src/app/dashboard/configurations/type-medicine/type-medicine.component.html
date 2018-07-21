@@ -1,59 +1,93 @@
+
+
 <h2 class="ui center aligned icon header">
     <i class="circular cogs icon"></i>
     Tipo de Medicamentos
   </h2>
-  
+  <!-- {{ formTypeMedicine.value  | json }} -->
   <div style="padding: 2.5rem 2.5rem">
 
     <!-- Form Editar & Crear -->
     <div class="ui segment">
-      <form class="ui form">
+      <form 
+        [formGroup]="formTypeMedicine" 
+        class="ui form"
+        autocomplete="off">
         <div class="three fields">
+          <!-- input nombre medicamente -->
           <div class="field">
             <label>Nombre del Medicamento</label>
-            <input name="name" placeholder="Nombre de Medicamento" type="text" >
-          </div>                
+            <input 
+              formControlName="name"
+              name="name" 
+              placeholder="Nombre de Medicamento" 
+              type="text" >
+          </div>  
+          <!-- select forma  -->             
           <div class="field">
             <label>Forma</label>
-            <select name="presentation" id="" class="ui search dropdown">
+            <select 
+              formControlName="form" 
+              name="presentation" 
+              class="ui search dropdown">
               <option value="">Selecciona alguna por favor</option>
-              <option value="1">Tópico - (Crema)</option>
-              <option value="2">Inyectable - (Ampolleta)</option>
-              <option value="3">Sólido - (Pasta)</option>
-              <option value="4">Líquido </option>              
-            </select>
-          </div>                
-          <div class="field">
-            <label>Presentación</label>
-            <select name="presentation" id="" class="ui search dropdown">
-              <option value="">Selecciona alguna por favor</option>
-              <option value="1">Unidad</option>
-              <option value="2">Caja</option>
-              <option value="3">Sobre</option>
-              <option value="4">Frasco</option>
-              <option value="5">Tableta</option>
-              <option value="6">Ampolleta</option>
+              <option value="topico">Tópico - (Crema)</option>
+              <option value="inyectable">Inyectable - (Ampolleta)</option>
+              <option value="sólido">Sólido - (Pasta)</option>
+              <option value="liquido">Líquido </option>              
             </select>
           </div>  
-          <div class="field">         
-            <label>Symbol</label> 
-            <div class="ui action input">
-              <input type="text" placeholder="Especif. numérica">
-              <select class="ui compact selection dropdown">
-                <option value="mg">mg</option>
-                <option value="ml">ml</option>
-                <option value="gr">gr</option>
-                <option value="lt">lt</option>
-              </select>              
-            </div>
+          <!-- select presentacion   -->          
+          <div class="field">
+            <label>Presentación</label>
+            <select 
+              formControlName="presentation"
+              name="presentation" 
+              class="ui search dropdown">
+              <option value="">Selecciona alguna por favor</option>
+              <option value="unidad">Unidad</option>
+              <option value="caja">Caja</option>
+              <option value="sobre">Sobre</option>
+              <option value="frasco">Frasco</option>
+              <option value="tableta">Tableta</option>
+              <option value="ampolleta">Ampolleta</option>
+            </select>
+          </div>  
+          <!-- select simbolo   -->  
+          <div class="field"> 
+            <label>Symbol</label>
+            <div class="ui right labeled input">
+                <input 
+                  formControlName="qsymbol"  
+                  type="text" 
+                  value="0"
+                  placeholder="Especif. numérica">
+                <select  formControlName="symbol"  class="ui compact selection dropdown">
+                  <option selected="selected" value="mg">mg</option>
+                  <option value="ml">ml</option>
+                  <option value="gr">gr</option>
+                  <option value="lt">lt</option>
+                </select>
+              </div>
+
           </div>              
         </div>        
 
-        <button type="submit" class="ui small button"> Ok, Guardar! </button>        
+        <button 
+          *ngIf="!isEditing"
+          [disabled]="formTypeMedicine.invalid"
+          (click)="createTypeMedicine()" 
+          class="ui small green button"> Ok, Guardar! </button>  
+        
+        <button 
+          *ngIf="isEditing"
+          [disabled]="formTypeMedicine.invalid"
+          (click)="editTypeMedicine()" 
+          class="ui small yellow button"> Ok, Editar! </button> 
       </form>
     </div>
-    <!-- Form Editar & Crear -->
-    
+      
+    <!-- List Medicines -->
     <table class="ui striped small basic table">
       <thead style="background: rgb(221, 217, 217);">
         <tr>        
@@ -65,21 +99,26 @@
         </tr>
       </thead>
       <tbody>
-  
-          <td>Medicamento: &nbsp; &nbsp; <div class="ui green horizontal label"> Acetaminofen </div></td>   
-          <td>Inyectable</td>
-          <td>Ampolleta</td>
-          <td>5 ml</td>          
+        <h2 *ngIf="typeMedicines.length <= 0 "  > No hay medicinas </h2>
+        <tr *ngFor="let medicine of typeMedicines; " >
+          <td>Medicamento: &nbsp; &nbsp; 
+            <div class="ui green horizontal label"> {{medicine.name }} </div></td>   
+          <td>{{medicine.form }}</td>
+          <td>{{medicine.presentation }}</td>
+          <td>{{medicine.qsymbol }} {{medicine.symbol }}</td>          
           <td>
               <div class="ui icon small buttons">
-                <button class="ui yellow basic button">
+                <button 
+                  (click)="prepareToEditTypeMedicine(medicine)"
+                  class="ui yellow basic button">
                   <i class="edit icon"></i> Editar
                 </button>
-                <button class="ui red basic button">
+                <button (click)="deleteTypeMedicine(medicine._id)" class="ui red basic button">
                   <i class="trash icon"></i> Eliminar
                 </button>            
               </div>
           </td>      
+        </tr>
   
       </tbody>
       <tfoot class="full-width">
