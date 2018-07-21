@@ -54,7 +54,7 @@
             <input type="text" name="name" formControlName="name" placeholder="Tipo de Rh - Nombre">
             <div class="ui pointing label" *ngIf="!formRh.controls.name.valid">
                 Escribe algo aqui, por favor!
-              </div>
+            </div>
           </div>          
           <button *ngIf="!update; else updateBoton" class="ui right floated small positive basic labeled icon button" type="submit" [disabled]="formRh.invalid">
               <i class="hand pointer outline icon"></i> Crear

@@ -43,8 +43,7 @@ export class TypeRhComponent implements OnInit, OnDestroy {
     this.typeRh = new TypeRh('');
     this.formRh.patchValue(this.typeRh);
     this.typeId = '';
-    $('#modalTypeRh').modal('show');
-    console.log(this.update);
+    $('#modalTypeRh').modal('show');    
     return;
   }
   
@@ -54,8 +53,7 @@ export class TypeRhComponent implements OnInit, OnDestroy {
     // Adjunta { key => value } en el form
     this.formRh.patchValue(typeRh);
     this.typeId = typeRh['_id'];
-    $('#modalTypeRh').modal('show');
-    console.log(this.update);
+    $('#modalTypeRh').modal('show');    
     return;
   }
 
