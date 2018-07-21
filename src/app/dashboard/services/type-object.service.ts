@@ -19,25 +19,22 @@ export class TypeObjectService {
     return this.http.get(url);
   }
   
-  
   // Guardar Types/Objects
   saveTypeOject(typeObject: TypeObjectModel) {
     const url = `${this.api}${this.route}`;
     return this.http.post(url, typeObject);
   }
-
-  // Obtener Types/Objects
-  getTypeObject(id: string) {
-    const url = `${this.api}${this.route}/${id}`;
-    return this.http.get(url);
-  }
-
+  
   // Actualizar Types/Objects
   updateTypeObject( id: string, update:TypeObjectModel ) {
     const url = `${this.api}${this.route}/${id}`;
     return this.http.put(url, update);
   } 
 
-
+  // Eliminar Type/Object
+  deleteTypeObject(id: string) {
+    const url = `${this.api}${this.route}/${id}`;
+    return this.http.delete(url);
+  }
 
 }

@@ -32,11 +32,9 @@ export class TypeObjectComponent implements OnInit {
 
   }
 
-  ngOnInit() {  
-    
-  }
+  ngOnInit() { }
 
-
+  // Cargar Types/Object
   loadTypesObject() {
     this.typeObjectService.loadAllTypesObjects().subscribe(data => {
       this.typeObjects = data['typeObject'];
@@ -68,6 +66,7 @@ export class TypeObjectComponent implements OnInit {
     
   }
 
+  // Obtener Type/Object para edición
   editTypeObject(type: TypeObjectModel) {
     this.create = false;
     this.formTypeObject.patchValue({name: type.name});
@@ -75,7 +74,8 @@ export class TypeObjectComponent implements OnInit {
 
   }
 
-  actualizarTypeObject() {
+  // Actualizar Type/Object
+  updateTypeObject() {
     this.typeObjectModel = new TypeObjectModel(this.formTypeObject.value.name);
     this.typeObjectService.updateTypeObject(this.idPaEditar, this.typeObjectModel).subscribe(data => {
       if(data['Ok'] !== true ) {
@@ -92,4 +92,23 @@ export class TypeObjectComponent implements OnInit {
     });
     this.create = true;
   }
+
+  // Eliminar Type/Object
+  deleteTypeObject(type: TypeObjectModel) {
+    this.typeObjectService.deleteTypeObject(type['_id']).subscribe(data => {
+      if(data['Ok'] !== true ) {
+        swal('Bad Job', `¡Lo sentimos! Status: ${data[status]} `, 'error' );
+        return;
+      }
+      
+      // Muestra el Sweet Alert
+      swal('Good Job', 'Objeto eliminado exitosamente', 'success');
+
+      this.loadTypesObject();
+    });
+  }
+
+
+
+
 }

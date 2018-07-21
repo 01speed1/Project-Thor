@@ -23,7 +23,7 @@
           </div>
           <div *ngIf="!create" class="field" style="margin-top: 26px"> 
             <button 
-              (click)="actualizarTypeObject()"
+              (click)="updateTypeObject()"
               type="submit" 
               class="ui small button" [disabled]="!formTypeObject.valid"> Ok, Editar! </button>        
           </div>
@@ -47,7 +47,7 @@
                 <button class="ui yellow basic button" (click)="editTypeObject(object)">
                   <i class="edit icon"></i> Editar
                 </button>
-                <button class="ui red basic button">
+                <button class="ui red basic button" (click)="deleteTypeObject(object)">
                   <i class="trash icon"></i> Eliminar
                 </button>            
               </div>
